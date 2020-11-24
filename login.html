@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>Login</title>
+</head>
+<body>
+<div id="app">
+    <section id="contain">
+        <header class="header">
+            <h1>Login</h1>
+        </header>
+        <section class="main">
+            <el-form :model="form" label-width="100px">
+                <el-form-item label="用户名">
+                    <el-input v-model="form.username"></el-input>
+                </el-form-item>
+                <el-form-item label="密码">
+                    <el-input v-model="form.password"></el-input>
+                </el-form-item>
+
+                <el-form-item label="文件上传" prop="desc">
+                    <el-upload
+                            class="upload-demo"
+                            drag
+                            action="*"
+                            multiple>
+                        <i class="el-icon-upload"></i>
+                        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                    </el-upload>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="regist('form')">注册</el-button>
+                    <el-button @click="login('form')">登录</el-button>
+                </el-form-item>
+            </el-form>
+        </section>
+    </section>
+</div>
+<!-- built files will be auto injected -->
+<!--<script src="D:\NodeDemo\firstApp\node_modules\vue\dist/vue.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- import Vue before Element -->
+<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                form: {
+                    username: '',
+                    password: ''
+                },
+                file: ''
+            }
+        },
+
+        methods: {
+            login() {
+                axios.post('http://php.com', this.form)
+                    .then(function (res) {
+                        console.log(res);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            regist() {
+                axios.post('http://php.com', this.form)
+                    .then(function (res) {
+                        console.log(res);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        },
+    })
+</script>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #contain {
+        width: 500px;
+        height: auto;
+        background-color: whitesmoke;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 5px 2px gray;
+    }
+
+    .header {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .main {
+        background-color: white;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+</style>
+</body>
+</html>
