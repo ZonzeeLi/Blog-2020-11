@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件,登录系统</title>
+</head>
+<body>
+<form action="/upload"  method="post" enctype="multipart/form-data">
+    <input type="file" name="f1">
+    <input type="submit" value="上传">
+</form>
+<form action="" method="post" novalidate autocomplete="off">
+    <div>
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username">
+    </div>
+
+    <div>
+        <label for="password">password:</label>
+        <input type="password" name="password" id="password">
+    </div>
+
+{{/*    <div>*/}}
+{{/*        <input type="submit" value="注册">*/}}
+{{/*    </div>*/}}
+    <input type="button" value="登录" onClick="login()">
+    <input type="button" value="注册" onClick="regist()">
+</form>
+{{/*<form action="login" method="post" novalidate autocomplete="off">*/}}
+{{/*    <div>*/}}
+{{/*        <input type="submit" value="登录">*/}}
+{{/*    </div>*/}}
+
+{{/*</form>*/}}
+<a href="mailto:?subject=&body=" rel="nofollow">发送邮件</a>
+<br>
+
+<form action="/email" method="post" novalidate autocomplete="off">
+    <div>
+        <p>请输入你的收件人:</p>
+        <input type="text" name="receive">
+    </div>
+
+    <div>
+        <p>请输入你的邮件主题:</p>
+        <input type="text" name="subject">
+    </div>
+
+    <div>
+        <p>请输入你的邮件内容:</p>
+        <textarea name="content" cols="80">请输入邮件内容</textarea>
+    </div>
+         <input type="submit" value="发送">
+
+</form>
+<form action="/addblog" method="post" novalidate autocomplete="off">
+    <fieldset>
+        <legend>添加你的博客内容</legend>
+        文章主题：<input type="text" name="subject" id="subject">
+        文章内容：<textarea name="context" cols="80" id="context"></textarea>
+        作者：<input type="text" name="author" id="author">
+        <input type="submit" value="确认添加">
+    </fieldset>
+
+</form>
+<form action="/deleteblog" method="post" novalidate autocomplete="off">
+    <fieldset>
+        <legend>删除你的博客内容</legend>
+        删除文章的主题：<input type="text" name="delsubject" id="delsubject">
+        删除文章的作者：<input type="text" name="delauthor" id="delauthor">
+        <input type="submit" value="确认删除">
+    </fieldset>
+</form>
+<form action="/viewblog" method="post" novalidate autocomplete="off">
+    <fieldset>
+        <legend>查看你的博客内容</legend>
+        查看的主题：<input type="text" name="viewsubject" id="viewsubject">
+        查看的作者：<input type="text" name="viewauthor" id="viewauthor">
+        <input type="submit" value="查看" >
+    </fieldset>
+
+</form>
+<form action="/voicetotext"  method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>语音文件识别，并添加文本至数据库</legend>
+        上传你要转文本的音乐文件：<input type="file" name="f2">
+        <input type="submit" value="上传">
+        请输入该文件的作者：<input type="text" name="voiceauthor" >
+        请输入该文件的名称（主题）：<input type="text" name="voicesubject" >
+    </fieldset>
+</form>
+<form action="/texttovoice"  method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>语音合成，并将音频文件下载</legend>
+        上传你要转成音频的文本文件：<input type="file" name="f3">
+        <input type="submit" value="上传">
+    </fieldset>
+</form>
+<a href="/download/tts.mp3">查看语音合成文件</a>
+</body>
+<script>
+    function login(){
+        var f = document.getElementsByTagName("form")[1];
+        f.action='login';
+        f.submit()
+
+    }
+    function regist(){
+        var f = document.getElementsByTagName("form")[1];
+        f.action='signin';
+        f.submit()
+
+    }
+</script>
+</html>
